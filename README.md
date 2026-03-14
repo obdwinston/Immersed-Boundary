@@ -2,6 +2,8 @@
 
 A 2D incompressible Navier-Stokes solver using the Immersed Boundary Method (IBM) with direct forcing. Rigid bodies are represented by Lagrangian markers on an Eulerian fluid grid, with no-slip conditions enforced at the boundary using a fractional-step method on a staggered grid. Arbitrary body shapes are supported with configurable translation, rotation, and oscillation. The solver is CPU-parallelised.
 
+https://github.com/user-attachments/assets/82c106be-e706-484a-aaa6-1fd105f438df
+
 ## Quick Start
 
 **Requirements:** `gfortran` (with OpenMP), `ffmpeg`
@@ -14,26 +16,26 @@ chmod +x run.sh && ./run.sh
 
 ## Solver Verification
 
-https://github.com/user-attachments/assets/794f3b40-b65e-4d41-9666-d19e67a0cb5b
+https://github.com/user-attachments/assets/b32c15c9-b11c-461c-83b2-93ae837137fa
 
-| Metric             | Current | Reference |
-| ------------------ | :-----: | :-------: |
-| $St$               |  0.195  |   0.195   |
-| $C_{L,\text{avg}}$ |  0.000  |   0.000   |
-| $C_{L,\text{min}}$ | -0.781  |  -0.600   |
-| $C_{L,\text{max}}$ |  0.781  |   0.600   |
-| $C_{L,\text{amp}}$ |  1.562  |   1.200   |
-| $C_{D,\text{avg}}$ |  1.585  |   1.500   |
-| $C_{D,\text{min}}$ |  1.400  |   1.300   |
-| $C_{D,\text{max}}$ |  1.778  |   1.700   |
-| $C_{D,\text{amp}}$ |  0.378  |   0.400   |
+| Metric             | Current | Reference | Error (%) |
+| ------------------ | :-----: | :-------: | :-------: |
+| $St$               |  0.195  |   0.195   |    0.2    |
+| $C_{L,\text{avg}}$ |  0.000  |   0.000   |    0.0    |
+| $C_{L,\text{min}}$ | -0.653  |  -0.600   |    8.8    |
+| $C_{L,\text{max}}$ |  0.653  |   0.600   |    8.9    |
+| $C_{L,\text{amp}}$ |  1.306  |   1.200   |    8.9    |
+| $C_{D,\text{avg}}$ |  1.649  |   1.500   |    9.9    |
+| $C_{D,\text{min}}$ |  1.455  |   1.300   |   11.9    |
+| $C_{D,\text{max}}$ |  1.843  |   1.700   |    8.4    |
+| $C_{D,\text{amp}}$ |  0.389  |   0.400   |    2.9    |
 
 |          Parameter          | Description               |    Value    |
 | :-------------------------: | :------------------------ | :---------: |
-|          `nx, ny`           | Grid dimensions           |  700, 400   |
+|          `nx, ny`           | Grid dimensions           |  1400, 800  |
 |          `xl, xr`           | Domain x-bounds           | -10.0, 25.0 |
 |          `yb, yt`           | Domain y-bounds           | -10.0, 10.0 |
-|            `nS`             | Lagrangian markers        |     64      |
+|            `nS`             | Lagrangian markers        |     128     |
 |            `Lc`             | Characteristic length     |     1.0     |
 |         `Xc0, Yc0`          | Initial body position     |  0.0, 0.0   |
 |            `Th0`            | Initial body angle        |      0      |
