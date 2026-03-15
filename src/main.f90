@@ -22,11 +22,8 @@ program main
 
       call update_body()
       call set_velocity_bc()
-      call compute_predictor()
-      call compute_forcing()
-
-      u_star(nx,1:ny) = u_star(nx-1,1:ny)  ! outlet BC
-
+      call predict_velocity()
+      call apply_forcing()
       call solve_pressure()
       call correct_velocity()
 

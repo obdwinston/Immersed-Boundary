@@ -193,7 +193,7 @@ contains
       ! Build spread-interpolate matrices
       allocate(A_u(nS,nS), A_v(nS,nS))
 
-      ! Build A_u matrix for u-velocity (staggered: u at cell faces, offset in y by -0.5)
+      ! Build A_u matrix for u-velocity
       A_u = 0.0_wp
       !$OMP PARALLEL DO PRIVATE(l,il,ir,jb,jt,i,j,xu,yu,dk,dl)
       do k = 1, nS
@@ -215,7 +215,7 @@ contains
       end do
       !$OMP END PARALLEL DO
 
-      ! Build A_v matrix for v-velocity (staggered: v at cell faces, offset in x by -0.5)
+      ! Build A_v matrix for v-velocity
       A_v = 0.0_wp
       !$OMP PARALLEL DO PRIVATE(l,il,ir,jb,jt,i,j,xv,yv,dk,dl)
       do k = 1, nS
@@ -296,7 +296,7 @@ contains
    ! TIME STEPPING
    !=========================================================================
 
-   subroutine compute_predictor()
+   subroutine predict_velocity()
       integer :: i, j
       real(wp) :: ue, uw, un, us, vn, vs
       real(wp) :: adv_x, adv_y, diff_x, diff_y
@@ -335,9 +335,9 @@ contains
          end do
       end do
       !$OMP END PARALLEL DO
-   end subroutine compute_predictor
+   end subroutine predict_velocity
 
-   subroutine compute_forcing()
+   subroutine apply_forcing()
       integer :: k, l, i, j, il, ir, jb, jt
       real(wp) :: xu, yu, xv, yv, w
       real(wp) :: Fx_total, Fy_total, M_total
@@ -434,6 +434,7 @@ contains
       ! Update predictor velocity
       u_star = u_star + dt*fu
       v_star = v_star + dt*fv
+      u_star(nx,1:ny) = u_star(nx-1,1:ny)  ! outlet BC
 
       ! Compute force coefficients
       Fx_total = 0.0_wp
@@ -452,7 +453,7 @@ contains
       CM = -2.0_wp*M_total / (U_inf**2 * Lc**2)
 
       deallocate(rhs_u, rhs_v)
-   end subroutine compute_forcing
+   end subroutine apply_forcing
 
    subroutine solve_pressure()
       integer :: i, j, k
