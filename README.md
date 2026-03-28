@@ -65,13 +65,3 @@ https://github.com/user-attachments/assets/b32c15c9-b11c-461c-83b2-93ae837137fa
 ## Appendix
 
 <img width="920" height="914" alt="Image" src="https://github.com/user-attachments/assets/22bbfd47-0b73-45af-ab69-c208c856b351" />
-
-## References
-
-- Chorin (1968). _Numerical solution of the Navier-Stokes equations_.
-- Fadlun et al. (2000). _Combined immersed-boundary finite-difference methods for three-dimensional complex flow simulations_.
-- Guilmineau & Queutey (2002). _A numerical simulation of vortex shedding from an oscillating circular cylinder_.
-- Peskin (2002). _The immersed boundary method_.
-- Uhlmann (2005). _An immersed boundary method with direct forcing for the simulation of particulate flows_.
-- Taira & Colonius (2007). _The immersed boundary method: a projection approach_.
-- Kempe & Fröhlich (2012). _An improved immersed boundary method with direct forcing for the simulation of particle laden flows_.
