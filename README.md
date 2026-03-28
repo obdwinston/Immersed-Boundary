@@ -2,7 +2,7 @@
 
 A 2D incompressible Navier-Stokes solver using the Immersed Boundary Method (IBM) with direct forcing. Rigid bodies are represented by Lagrangian markers on an Eulerian fluid grid, with no-slip conditions enforced at the boundary using a fractional-step method on a staggered grid. Arbitrary body shapes are supported with configurable translation, rotation, and oscillation. The solver is CPU-parallelised.
 
-https://github.com/user-attachments/assets/82c106be-e706-484a-aaa6-1fd105f438df
+https://github.com/user-attachments/assets/5296b04d-f2c0-4f6a-bad3-10319321756a
 
 ## Quick Start
 
