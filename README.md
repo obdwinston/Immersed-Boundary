@@ -6,9 +6,13 @@ https://github.com/user-attachments/assets/82c106be-e706-484a-aaa6-1fd105f438df
 
 ## Quick Start
 
-**Requirements:** `gfortran` (with OpenMP), `ffmpeg`
+```bash
+brew install gcc ffmpeg
+```
 
-Execute in terminal (macOS):
+```bash
+git clone https://github.com/obdwinston/Immersed-Boundary.git && cd Immersed-Boundary
+```
 
 ```bash
 chmod +x run.sh && ./run.sh
